@@ -37,8 +37,8 @@ public class Student {
 	 * 
 	 */
 	public void setIme(String ime) {
-		if(ime==null)
-			throw new RuntimeException("Ime ne sme biti null.");
+		if(ime==null || ime.isEmpty())
+			throw new RuntimeException("Ime ne sme biti null ili prazan String");
 		this.ime = ime;
 	}
 	
@@ -60,8 +60,8 @@ public class Student {
 	 * 
 	 */
 	public void setPrezime(String prezime) {
-		if(prezime==null)
-			throw new RuntimeException("Prezime ne sme biti null.");
+		if(prezime==null || prezime.equals(""))
+			throw new RuntimeException("Prezime ne sme biti null ili prazan String!");
 		this.prezime = prezime;
 	}
 	
@@ -83,8 +83,8 @@ public class Student {
 	 * 
 	 */
 	public void setBrIndexa(String brIndexa) {
-		if(brIndexa==null)
-				throw new RuntimeException("Broj indeksa ne sme biti null.");
+		if(brIndexa==null || brIndexa.equals(""))
+				throw new RuntimeException("Broj indeksa ne sme biti null ili prazan String!");
 		this.brIndexa = brIndexa;
 	}
 

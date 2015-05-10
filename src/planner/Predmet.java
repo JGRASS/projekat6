@@ -23,7 +23,7 @@ public class Predmet {
 	/**
 	 * Ocena koju je student dobio iz odredjenog predmet.
 	 */
-	private double ocena;
+	private int ocena;
 	
 	/**
 	 * Da li je predmet polozen ili ne, kao boolean.
@@ -52,6 +52,8 @@ public class Predmet {
 	 * 
 	 */
 	public void setNaziv(String naziv) {
+		if(naziv==null || naziv.equals(""))
+			throw new RuntimeException("Naziv ne sme biti null ili prazan String");
 		this.naziv = naziv;
 	}
 	
@@ -85,7 +87,7 @@ public class Predmet {
 	 * 
 	 * @return ocena koju je student dobio.
 	 */
-	public double getOcena() {
+	public int getOcena() {
 		return ocena;
 	}
 	
@@ -97,7 +99,7 @@ public class Predmet {
 	 * @throws java.lang.RuntimeException ako je uneta vrenost manja od 5 ili veca od 10.
 	 * 
 	 */
-	public void setOcena(double ocena) {
+	public void setOcena(int ocena) {
 		if(ocena <5 || ocena>10)
 			throw new RuntimeException("Ocena mora biti izmedju 5 i 10.");
 		this.ocena = ocena;
@@ -131,13 +133,12 @@ public class Predmet {
 	 * 
 	 * @param datum polaganja ispita iz odredjenog predmeta.
 	 * 
-	 * @throws java.lang.RuntimeException ako je uneta vrednost datum u proslosti.
+	 * @throws java.lang.RuntimeException ako je uneta vrednost null ili datum u proslosti.
 	 * 
 	 */
 	public void setDatumIspita(GregorianCalendar datumIspita) {
-		GregorianCalendar danasnjiDan = new GregorianCalendar(GregorianCalendar.YEAR, GregorianCalendar.MONTH, GregorianCalendar.DAY_OF_MONTH);;
-		if(datumIspita.before(danasnjiDan))
-				throw new RuntimeException("Datum ne sme biti u proslosti.");
+		if(datumIspita==null || datumIspita.before(new GregorianCalendar()))
+				throw new RuntimeException("Datum ne sme biti null ili trenutak u proslosti.");
 		this.datumIspita = datumIspita;
 	}
 	
