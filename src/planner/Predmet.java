@@ -185,6 +185,13 @@ public class Predmet {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Predmet [naziv=" + naziv + ", ESPB=" + ESPB + ", semestar="
+				+ semestar + ", ocena=" + ocena + ", polozen=" + polozen
+				+ ", datumIspita=" + datumIspita + "]";
+	}
 	
 	
 	
