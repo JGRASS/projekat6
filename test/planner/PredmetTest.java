@@ -83,7 +83,7 @@ public class PredmetTest {
 	@Test
 	public void testSetOcena() {
 		predmet.setOcena(8);
-		assertEquals(8, predmet.getESPB());
+		assertEquals(8, predmet.getOcena());
 	}
 	
 	/**
@@ -128,6 +128,22 @@ public class PredmetTest {
 	}
 
 
+	/**
+	 * Test method for {@link planner.Predmet#setSemestar(int)}.
+	 */
+	@Test
+	public void testSetSemestar() {
+		predmet.setSemestar(6);
+		assertEquals(6, predmet.getSemestar());
+	}
 	
+	/**
+	 * Test method for {@link planner.Predmet#setSemestar(int)}.
+	 */
+	@Test (expected = java.lang.RuntimeException.class) 
+	public void testSetSemestarVanGranica() {
+		predmet.setSemestar(10);
+		
+	}
 
 }

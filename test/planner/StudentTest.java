@@ -5,6 +5,8 @@ package planner;
 
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -105,5 +107,36 @@ public class StudentTest {
 		student.setBrIndexa("");
 		
 	}
+	
+	/**
+	 * Test method for {@link planner.Student#setPredmeti(java.lang.String)}.
+	 */
+	@Test
+	public void testSetPredmeti() {
+		LinkedList<Predmet> p = new LinkedList<Predmet>();
+		Predmet p1 = new Predmet();
+		p1.setNaziv("Matematika");
+		p.add(p1);
+		
+		student.setPredmeti(p);
+		assertEquals(p, student.getPredmeti());
+		
+	}
 
+	/**
+	 * Test method for {@link planner.Student#setPredmeti(java.lang.String)}.
+	 */
+	@Test
+	public void testSetPredmeti2() {
+		LinkedList<Predmet> p = new LinkedList<Predmet>();
+		Predmet p1 = new Predmet();
+		Predmet p2 = new Predmet();
+		p2.setESPB(5);
+		p.add(p1);
+		p.add(p2);
+		
+		student.setPredmeti(p);
+		assertEquals(2, student.getPredmeti().size());
+		assertEquals(5, student.getPredmeti().get(1).getESPB());
+	}
 }

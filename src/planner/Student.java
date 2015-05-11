@@ -1,10 +1,14 @@
 package planner;
 
+import java.util.LinkedList;
+
 /**
  * @author Tatjana
  *
  */
 public class Student {
+	
+
 	
 	/**
 	 * Ime studenta.
@@ -18,6 +22,12 @@ public class Student {
 	 * Broj indeksa koji je tipa String.
 	 */
 	private String brIndexa;
+	
+	/**
+	 * Lista predmeta za studenta.
+	 */
+	private LinkedList<Predmet> predmeti = new LinkedList<Predmet>();
+	
 	
 	/**
 	 * Metoda vraca vrednost atributa ime, ime studenta.
@@ -88,4 +98,23 @@ public class Student {
 		this.brIndexa = brIndexa;
 	}
 
+	/**
+	 * Metoda vraca vrednost atributa predmeti, listu predmeta studenta/
+	 * @return listu predmeta kao LinkedList
+	 */
+	public LinkedList<Predmet> getPredmeti() {
+		return predmeti;
+	}
+
+	/**
+	 * Metoda postavlja listu predmeta na zadatu vrednost iz parametra.
+	 * 
+	 * @param predmeti studenta.
+	 */
+	public void setPredmeti(LinkedList<Predmet> predmeti) {
+		this.predmeti = predmeti;
+	}
+
+	
+	
 }

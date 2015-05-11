@@ -21,6 +21,12 @@ public class Predmet {
 	private int ESPB;
 	
 	/**
+	 * redni broj semestra kome primada predmet.
+	 */
+	private int semestar;
+	
+
+	/**
 	 * Ocena koju je student dobio iz odredjenog predmet.
 	 */
 	private int ocena;
@@ -79,6 +85,25 @@ public class Predmet {
 		if(eSPB <4 || eSPB>10)
 			throw new RuntimeException("Broj ESPB bodova mora biti izmedju 4 i 10.");
 		ESPB = eSPB;
+	}
+	
+	/**
+	 * Metoda vraca vrednost atributa semestar.
+	 * @return redni broj semestra kome pripada predmet
+	 */
+	public int getSemestar() {
+		return semestar;
+	}
+	
+	/**
+	 * Metoda postavlja redni broj semestra na zadatu vrednost iz parametra.
+	 * @throws java.lang.RuntimeException ako je uneta vrenost manja od 1 ili veca od 8.
+	 * @param semestar kome pripada predmet
+	 */
+	public void setSemestar(int semestar) {
+		if(semestar <1 || semestar>8)
+			throw new RuntimeException("Broj ESPB bodova mora biti izmedju 1 i 8.");
+		this.semestar = semestar;
 	}
 	
 	/**
@@ -141,6 +166,27 @@ public class Predmet {
 				throw new RuntimeException("Datum ne sme biti null ili trenutak u proslosti.");
 		this.datumIspita = datumIspita;
 	}
+
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Predmet other = (Predmet) obj;
+		if (naziv == null) {
+			if (other.naziv != null)
+				return false;
+		} else if (!naziv.equals(other.naziv))
+			return false;
+		return true;
+	}
+	
+	
 	
 
 }
