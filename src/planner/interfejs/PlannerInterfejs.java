@@ -11,7 +11,7 @@ public interface PlannerInterfejs {
 	public Predmet pronadjiPredmet(String naziv);
 	public LinkedList<Predmet> vratiSvePredmete();
 	public LinkedList<Predmet> vratiPolozenePredmete();
-	public int izracunajProsek();
+	public double izracunajProsek();
 	public int izracunajESPB();
 	
 	public void ucitajIzFajla(String putanja);
