@@ -2,6 +2,7 @@ package gui;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -105,6 +106,11 @@ public class PrijavaGUI extends JFrame {
 	private JButton getBtnPrijaviSe() {
 		if (btnPrijaviSe == null) {
 			btnPrijaviSe = new JButton("Prijavi se");
+			btnPrijaviSe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.prikaziPlannerProzor(txtIme.getText(), txtPrezime.getText(), txtBrojindeksa.getText());
+				}
+			});
 			btnPrijaviSe.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			btnPrijaviSe.setBounds(268, 52, 99, 33);
 		}

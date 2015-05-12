@@ -1,5 +1,6 @@
 package gui;
 
+
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
@@ -18,6 +19,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 
 import planner.Predmet;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PlannerGUI extends JFrame {
@@ -114,6 +118,11 @@ public class PlannerGUI extends JFrame {
 	private JButton getBtnDodajPredmet() {
 		if (btnDodajPredmet == null) {
 			btnDodajPredmet = new JButton("Dodaj predmet");
+			btnDodajPredmet.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.prikaziDodajPredmetProzor();
+				}
+			});
 			btnDodajPredmet.setBounds(10, 24, 130, 34);
 		}
 		return btnDodajPredmet;
@@ -163,6 +172,12 @@ public class PlannerGUI extends JFrame {
 	private JButton getBtnKrajRada() {
 		if (btnKrajRada == null) {
 			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+					GUIKontroler.prikaziPrijavatProzor();
+				}
+			});
 			btnKrajRada.setBounds(39, 336, 91, 23);
 			
 		}
