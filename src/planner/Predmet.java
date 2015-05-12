@@ -1,5 +1,6 @@
 package planner;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
@@ -7,8 +8,10 @@ import java.util.GregorianCalendar;
  * @author Tatjana
  *
  */
-public class Predmet {
+public class Predmet implements Serializable {
 	
+	
+
 	/**
 	 * Naziv predmeta.
 	 * 
