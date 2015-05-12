@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,18 +8,24 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 
+import planner.Predmet;
+
+
 public class PlannerGUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
 	private JPanel panel;
@@ -44,8 +49,14 @@ public class PlannerGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public PlannerGUI() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				GUIKontroler.ugasiAplikaciju();
+			}
+		});
 		setTitle("StudentPlanner");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 613, 407);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -169,5 +180,15 @@ public class PlannerGUI extends JFrame {
 			list_2 = new JList();
 		}
 		return list_2;
+	}
+	
+	protected void prikaziAktuelnePredmete(LinkedList<Predmet> predmeti) {
+		list.setListData(predmeti.toArray());
+	}
+	protected void prikaziPolozenePredmete(LinkedList<Predmet> predmeti) {
+		list_1.setListData(predmeti.toArray());
+	}
+	protected void prikaziSvePredmete(LinkedList<Predmet> predmeti) {
+		list_2.setListData(predmeti.toArray());
 	}
 }

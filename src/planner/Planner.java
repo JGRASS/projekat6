@@ -10,6 +10,7 @@ import planner.sistemskeoperacije.SOObrisiPredmet;
 import planner.sistemskeoperacije.SOPronadjiPredmet;
 import planner.sistemskeoperacije.SOSacuvajUFajl;
 import planner.sistemskeoperacije.SOUcitajIzFajla;
+import planner.sistemskeoperacije.SOVratiAktuelnePredmete;
 import planner.sistemskeoperacije.SOVratiPolozenePredmete;
 
 public class Planner implements PlannerInterfejs{
@@ -41,8 +42,12 @@ public class Planner implements PlannerInterfejs{
 
 	@Override
 	public LinkedList<Predmet> vratiPolozenePredmete() {
-		// TODO Auto-generated method stub
+		
 		return SOVratiPolozenePredmete.vratiPolozenePredmete(student.getPredmeti());
+	}
+	public LinkedList<Predmet> vratiAktuelnePredmete() {
+		
+		return SOVratiAktuelnePredmete.vratiAktuelnePredmete(student.getPredmeti());
 	}
 
 	@Override
