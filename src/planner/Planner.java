@@ -71,7 +71,6 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public LinkedList<Predmet> vratiPolozenePredmete() {
-		// TODO Auto-generated method stub
 		return SOVratiPolozenePredmete.vratiPolozenePredmete(student.getPredmeti());
 	}
 
