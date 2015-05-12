@@ -3,9 +3,18 @@ package planner.sistemskeoperacije;
 import java.util.LinkedList;
 
 import planner.Predmet;
-
+/**
+ * 
+ * @author Tatjana
+ *
+ */
 public class SODodajPredmet {
-
+	/**
+	 * Sistemska operacija za dodavanje novog predmeta u listu predmeti.
+	 * 
+	 * @param predmet
+	 * @param predmeti lista pedmeta
+	 */
 	public static void dodajPredmet(Predmet predmet, LinkedList<Predmet> predmeti){
 		
 		if (predmeti.contains(predmet))
