@@ -5,9 +5,17 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.LinkedList;
 import planner.Predmet;
-
+/**
+ * 
+ * @author Tatjana
+ *
+ */
 public class SOUcitajIzFajla {
-
+	/**
+	 * Sistemska operacija za ucitavanje iz fajla.
+	 * @param putanja
+	 * @param predmeti lista svih predmeta.
+	 */
 	public static void ucitajIzFajla(String putanja, LinkedList<Predmet> predmeti){
 		
 		try{
