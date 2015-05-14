@@ -9,6 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import biblioteka.Knjiga;
 import planner.Planner;
 import planner.Predmet;
 import planner.interfejs.PlannerInterfejs;
@@ -125,6 +126,15 @@ public class GUIKontroler extends JFrame {
 	}
 	
 	public static void obrisiPredmet(Predmet predmet){
-		planner.ObrisiPredmet(predmet);
+		
+		try{
+			planner.ObrisiPredmet(predmet);
+				
+				glavni.prikaziSvePredmete(planner.vratiSvePredmete());
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
+						"Greska", JOptionPane.ERROR_MESSAGE);
+			}
 	}
+	
 }
