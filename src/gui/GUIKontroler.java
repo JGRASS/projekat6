@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import planner.Planner;
+import planner.Predmet;
 import planner.interfejs.PlannerInterfejs;
 
 public class GUIKontroler extends JFrame {
@@ -62,7 +63,7 @@ public class GUIKontroler extends JFrame {
 	}
 	
 	
-	public static void ucitajIzFajla(String ime, String prezime, String brojIndeksa) {
+	public static void ucitajIzFajla() {
 		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showOpenDialog(glavni.getContentPane());
@@ -80,7 +81,7 @@ public class GUIKontroler extends JFrame {
    }
 
 	
-	public static void sacuvajUFajl(String ime, String prezime, String brojIndeksa) {
+	public static void sacuvajUFajl() {
 		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showSaveDialog(glavni.getContentPane());
@@ -97,5 +98,9 @@ public class GUIKontroler extends JFrame {
 		}
 		
 		
+	}
+	
+	public static void obrisiPredmet(Predmet predmet){
+		planner.ObrisiPredmet(predmet);
 	}
 }
