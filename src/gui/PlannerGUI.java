@@ -47,7 +47,6 @@ public class PlannerGUI extends JFrame {
 	private JList list;
 	private JScrollPane scrollPane_1;
 	private JList list_1;
-	private JButton btnKrajRada;
 	private JScrollPane scrollPane_2;
 	private JList list_2;
 	private JMenuBar menuBar;
