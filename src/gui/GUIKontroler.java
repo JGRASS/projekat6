@@ -115,7 +115,7 @@ public class GUIKontroler extends JFrame {
 			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
 					"Greska", JOptionPane.ERROR_MESSAGE);
 		}
-		planner.ObrisiPredmet(predmet);
+		
 	}
 	
 	public static void dodajPredmet(String naziv, String semestar, String ESPB, String datum) {
@@ -142,6 +142,13 @@ public class GUIKontroler extends JFrame {
 		}
 	
 
+	public static void polozen(Predmet predmet){
+		Predmet p = planner.pronadjiPredmet(predmet.getNaziv());
+		p.setPolozen(true);
+		glavni.prikaziPolozenePredmete(planner.vratiPolozenePredmete());
+		glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
+		
+	}
 
 
 }

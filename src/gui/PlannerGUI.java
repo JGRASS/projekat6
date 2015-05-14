@@ -153,6 +153,11 @@ public class PlannerGUI extends JFrame {
 	private JButton getBtnPolozenPredmet() {
 		if (btnPolozenPredmet == null) {
 			btnPolozenPredmet = new JButton("Polozen predmet");
+			btnPolozenPredmet.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.polozen((Predmet)list.getSelectedValue());
+				}
+			});
 			btnPolozenPredmet.setHorizontalTextPosition(SwingConstants.LEFT);
 			btnPolozenPredmet.setHorizontalAlignment(SwingConstants.LEFT);
 			btnPolozenPredmet.setBounds(10, 136, 130, 34);
