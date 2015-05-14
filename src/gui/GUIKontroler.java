@@ -75,7 +75,8 @@ public class GUIKontroler extends JFrame {
 				File file = fc.getSelectedFile();
 				planner.ucitajIzFajla(file.getAbsolutePath());
 				
-				glavni.prikaziSvePredmete(planner.vratiSvePredmete());;
+				glavni.prikaziSvePredmete(planner.vratiSvePredmete());
+				glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
 			}	
 			
 		} catch (Exception e1) {
@@ -105,6 +106,15 @@ public class GUIKontroler extends JFrame {
 	}
 	
 	public static void obrisiPredmet(Predmet predmet){
+		try{
+			planner.ObrisiPredmet(predmet);
+			
+			glavni.prikaziSvePredmete(planner.vratiSvePredmete());
+			glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
 		planner.ObrisiPredmet(predmet);
 	}
 	
@@ -122,6 +132,7 @@ public class GUIKontroler extends JFrame {
 		planner.dodajPredmet(predmet);
 		glavni.prikaziSvePredmete(planner.vratiSvePredmete());
 		glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
+		
 		
 		}catch (Exception e1) {
 			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),

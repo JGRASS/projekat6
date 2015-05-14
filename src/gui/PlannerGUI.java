@@ -143,7 +143,7 @@ public class PlannerGUI extends JFrame {
 			btnObrisiPredmet = new JButton("Obrisi predmet");
 			btnObrisiPredmet.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.obrisiPredmet((Predmet)list_1.getSelectedValue());
+					GUIKontroler.obrisiPredmet((Predmet)list.getSelectedValue());
 				}
 			});
 			btnObrisiPredmet.setBounds(10, 80, 130, 34);
@@ -204,6 +204,7 @@ public class PlannerGUI extends JFrame {
 	protected void prikaziAktuelnePredmete(LinkedList<Predmet> predmeti) {
 		list.setListData(predmeti.toArray());
 	}
+	
 	protected void prikaziPolozenePredmete(LinkedList<Predmet> predmeti) {
 		list_1.setListData(predmeti.toArray());
 	}
