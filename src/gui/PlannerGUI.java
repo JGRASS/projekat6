@@ -23,6 +23,10 @@ import planner.Predmet;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
 
 public class PlannerGUI extends JFrame {
 
@@ -43,9 +47,15 @@ public class PlannerGUI extends JFrame {
 	private JList list;
 	private JScrollPane scrollPane_1;
 	private JList list_1;
-	private JButton btnKrajRada;
 	private JScrollPane scrollPane_2;
 	private JList list_2;
+	private JMenuBar menuBar;
+	private JMenu mnFile;
+	private JMenu mnHelp;
+	private JMenuItem mntmOpen;
+	private JMenuItem mntmSave;
+	private JMenuItem mntmExit;
+	private JMenuItem mntmAbout;
 
 	
 
@@ -62,6 +72,7 @@ public class PlannerGUI extends JFrame {
 		setTitle("StudentPlanner");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 613, 407);
+		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -130,6 +141,11 @@ public class PlannerGUI extends JFrame {
 	private JButton getBtnObrisiPredmet() {
 		if (btnObrisiPredmet == null) {
 			btnObrisiPredmet = new JButton("Obrisi predmet");
+			btnObrisiPredmet.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.obrisiPredmet((Predmet)list_1.getSelectedValue());
+				}
+			});
 			btnObrisiPredmet.setBounds(10, 80, 130, 34);
 		}
 		return btnObrisiPredmet;
@@ -193,5 +209,68 @@ public class PlannerGUI extends JFrame {
 	}
 	protected void prikaziSvePredmete(LinkedList<Predmet> predmeti) {
 		list_2.setListData(predmeti.toArray());
+	}
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMnFile());
+			menuBar.add(getMnHelp());
+		}
+		return menuBar;
+	}
+	private JMenu getMnFile() {
+		if (mnFile == null) {
+			mnFile = new JMenu("FIle");
+			mnFile.add(getMntmOpen());
+			mnFile.add(getMntmSave());
+			mnFile.add(getMntmExit());
+		}
+		return mnFile;
+	}
+	private JMenu getMnHelp() {
+		if (mnHelp == null) {
+			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmAbout());
+		}
+		return mnHelp;
+	}
+	private JMenuItem getMntmOpen() {
+		if (mntmOpen == null) {
+			mntmOpen = new JMenuItem("Open");
+			mntmOpen.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.ucitajIzFajla();
+				}
+			});
+		}
+		return mntmOpen;
+	}
+	private JMenuItem getMntmSave() {
+		if (mntmSave == null) {
+			mntmSave = new JMenuItem("Save");
+			mntmSave.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sacuvajUFajl();
+				}
+			});
+		}
+		return mntmSave;
+	}
+	private JMenuItem getMntmExit() {
+		if (mntmExit == null) {
+			mntmExit = new JMenuItem("Exit");
+			mntmExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.ugasiAplikaciju();
+				}
+			});
+		}
+		return mntmExit;
+	}
+	private JMenuItem getMntmAbout() {
+		if (mntmAbout == null) {
+			mntmAbout = new JMenuItem("About");
+		}
+		return mntmAbout;
 	}
 }

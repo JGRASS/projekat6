@@ -3,12 +3,16 @@ package gui;
 
 import java.awt.EventQueue;
 import java.io.File;
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import planner.Planner;
+import planner.Predmet;
 import planner.interfejs.PlannerInterfejs;
 
 public class GUIKontroler extends JFrame {
@@ -62,7 +66,7 @@ public class GUIKontroler extends JFrame {
 	}
 	
 	
-	public static void ucitajIzFajla(String ime, String prezime, String brojIndeksa) {
+	public static void ucitajIzFajla() {
 		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showOpenDialog(glavni.getContentPane());
@@ -70,6 +74,7 @@ public class GUIKontroler extends JFrame {
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
 				planner.ucitajIzFajla(file.getAbsolutePath());
+				
 				glavni.prikaziSvePredmete(planner.vratiSvePredmete());;
 			}	
 			
@@ -80,7 +85,7 @@ public class GUIKontroler extends JFrame {
    }
 
 	
-	public static void sacuvajUFajl(String ime, String prezime, String brojIndeksa) {
+	public static void sacuvajUFajl() {
 		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showSaveDialog(glavni.getContentPane());
@@ -98,4 +103,34 @@ public class GUIKontroler extends JFrame {
 		
 		
 	}
+	
+	public static void obrisiPredmet(Predmet predmet){
+		planner.ObrisiPredmet(predmet);
+	}
+	
+	public static void dodajPredmet(String naziv, String semestar, String ESPB, String datum) {
+		try{
+			
+		Predmet predmet = new Predmet();
+		
+		predmet.setNaziv(naziv);
+		predmet.setSemestar(Integer.parseInt(semestar));
+		predmet.setESPB(Integer.parseInt(ESPB));
+		predmet.setDatumIspita(datum);
+		predmet.setPolozen(false);
+		
+		planner.dodajPredmet(predmet);
+		glavni.prikaziSvePredmete(planner.vratiSvePredmete());
+		glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
+		
+		}catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		}
+	
+
+
+
 }

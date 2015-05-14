@@ -46,7 +46,7 @@ public class Predmet implements Serializable{
 	/**
 	 * Datum kada se polaze ispit iz odredjenog predmeta.
 	 */
-	private GregorianCalendar datumIspita;
+	private String datumIspita;
 	
 	/**
 	 * 
@@ -156,7 +156,7 @@ public class Predmet implements Serializable{
 	 * 
 	 * @return datum polaganja ispita.
 	 */
-	public GregorianCalendar getDatumIspita() {
+	public String getDatumIspita() {
 		return datumIspita;
 	}
 	
@@ -168,9 +168,9 @@ public class Predmet implements Serializable{
 	 * @throws java.lang.RuntimeException ako je uneta vrednost null ili datum u proslosti.
 	 * 
 	 */
-	public void setDatumIspita(GregorianCalendar datumIspita) {
-		if(datumIspita==null || datumIspita.before(new GregorianCalendar()))
-				throw new RuntimeException("Datum ne sme biti null ili trenutak u proslosti.");
+	public void setDatumIspita(String datumIspita) {
+		if(datumIspita==null) 
+				throw new RuntimeException("Datum ne sme biti null");
 		this.datumIspita = datumIspita;
 	}
 

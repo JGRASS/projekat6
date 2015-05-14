@@ -23,14 +23,14 @@ public class Planner implements PlannerInterfejs{
 	/**
 	 *  Objekat klase Student, student za kog se pravi planer.
 	 */
-	private Student student;
+	private LinkedList<Predmet> predmeti = new LinkedList<Predmet>();
 	
 	/**
 	 * Metoda dodaje novi predmmet u planer, tako sto poziva sistemsku operaciju za dodavanje predmeta.
 	 */
 	@Override
 	public void dodajPredmet(Predmet predmet) {
-		SODodajPredmet.dodajPredmet(predmet, student.getPredmeti());
+		SODodajPredmet.dodajPredmet(predmet, predmeti);
 		
 	}
 
@@ -39,7 +39,7 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public void ObrisiPredmet(Predmet predmet) {
-		SOObrisiPredmet.ObrisiPredmet(predmet, student.getPredmeti());
+		SOObrisiPredmet.ObrisiPredmet(predmet, predmeti);
 		
 	}
 
@@ -52,7 +52,7 @@ public class Planner implements PlannerInterfejs{
 	@Override
 	public Predmet pronadjiPredmet(String naziv) {
 		
-		return SOPronadjiPredmet.pronadjiPredmet(naziv, student.getPredmeti());
+		return SOPronadjiPredmet.pronadjiPredmet(naziv, predmeti);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public LinkedList<Predmet> vratiSvePredmete() {
-		return student.getPredmeti();
+		return predmeti;
 	}
 
 	/**
@@ -73,11 +73,11 @@ public class Planner implements PlannerInterfejs{
 	@Override
 	public LinkedList<Predmet> vratiPolozenePredmete() {
 		
-		return SOVratiPolozenePredmete.vratiPolozenePredmete(student.getPredmeti());
+		return SOVratiPolozenePredmete.vratiPolozenePredmete(predmeti);
 	}
 	public LinkedList<Predmet> vratiAktuelnePredmete() {
 		
-		return SOVratiAktuelnePredmete.vratiAktuelnePredmete(student.getPredmeti());
+		return SOVratiAktuelnePredmete.vratiAktuelnePredmete(predmeti);
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public double izracunajProsek() {
-		return SOIzracunajProsek.izracunajProsek(student.getPredmeti());
+		return SOIzracunajProsek.izracunajProsek(predmeti);
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public int izracunajESPB() {
-		return SOIzracunajESPB.izracunajESPB(student.getPredmeti());
+		return SOIzracunajESPB.izracunajESPB(predmeti);
 		
 	}
 	
@@ -106,7 +106,7 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public void ucitajIzFajla(String putanja) {
-		SOUcitajIzFajla.ucitajIzFajla(putanja, student.getPredmeti());
+		SOUcitajIzFajla.ucitajIzFajla(putanja, predmeti);
 		
 	}
 
@@ -115,7 +115,7 @@ public class Planner implements PlannerInterfejs{
 	 */
 	@Override
 	public void sacuvajUFajl(String putanja) {
-		SOSacuvajUFajl.sacuvajUFajl(putanja, student.getPredmeti());		
+		SOSacuvajUFajl.sacuvajUFajl(putanja, predmeti);		
 	}
 	
 

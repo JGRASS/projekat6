@@ -11,6 +11,11 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.util.GregorianCalendar;
+
 public class DodajPredmet extends JFrame {
 
 	/**
@@ -122,6 +127,19 @@ public class DodajPredmet extends JFrame {
 	private JButton getBtnDodaj() {
 		if (btnDodaj == null) {
 			btnDodaj = new JButton("Dodaj ");
+			btnDodaj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+				GUIKontroler.dodajPredmet(txtNazivpredmeta.getText(),
+											txtSemestar.getText(),
+										     txtEspb.getText(),
+										     DateFormat.getDateInstance().format(dateChooser.getDate()));
+				
+				dispose();
+					
+				
+				}
+			});
 			btnDodaj.setBounds(32, 199, 96, 29);
 		}
 		return btnDodaj;
@@ -129,6 +147,11 @@ public class DodajPredmet extends JFrame {
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				}
+			});
 			btnOdustani.setBounds(156, 199, 96, 29);
 		}
 		return btnOdustani;

@@ -107,15 +107,6 @@ public class PredmetTest {
 		
 	}
 
-	/**
-	 * Test method for {@link planner.Predmet#setDatumIspita(java.util.GregorianCalendar)}.
-	 */
-	@Test (expected = java.lang.RuntimeException.class) 
-	public void testSetDatumIspitaProslost() {
-		GregorianCalendar datum = new GregorianCalendar();
-		datum.set(2015, 0, 3);
-		predmet.setDatumIspita(datum);
-	}
 
 	
 
