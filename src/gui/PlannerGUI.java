@@ -87,7 +87,7 @@ public class PlannerGUI extends JFrame {
 			panel.add(getBtnDodajPredmet());
 			panel.add(getBtnObrisiPredmet());
 			panel.add(getBtnPolozenPredmet());
-			panel.add(getBtnKrajRada());
+			
 		}
 		return panel;
 	}
@@ -169,20 +169,8 @@ public class PlannerGUI extends JFrame {
 		}
 		return list_1;
 	}
-	private JButton getBtnKrajRada() {
-		if (btnKrajRada == null) {
-			btnKrajRada = new JButton("Kraj rada");
-			btnKrajRada.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					dispose();
-					GUIKontroler.prikaziPrijavatProzor();
-				}
-			});
-			btnKrajRada.setBounds(39, 336, 91, 23);
-			
-		}
-		return btnKrajRada;
-	}
+	
+	
 	private JScrollPane getScrollPane_2() {
 		if (scrollPane_2 == null) {
 			scrollPane_2 = new JScrollPane();

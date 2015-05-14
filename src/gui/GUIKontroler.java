@@ -2,9 +2,12 @@ package gui;
 
 
 import java.awt.EventQueue;
+import java.io.File;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import planner.Planner;
 import planner.interfejs.PlannerInterfejs;
 
@@ -17,10 +20,9 @@ public class GUIKontroler extends JFrame {
 	public GUIKontroler() {
 	}
 	
-	private static PrijavaGUI prijavaGUI;
+	
 	private static PlannerGUI glavni;
 
-	
 	private static PlannerInterfejs planner;
 
 	/**
@@ -31,7 +33,10 @@ public class GUIKontroler extends JFrame {
 			public void run() {
 				try {
 					planner = new Planner();
-					prikaziPrijavatProzor();
+					glavni = new PlannerGUI();
+					glavni.setVisible(true);
+					glavni.setLocationRelativeTo(null);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,7 +46,7 @@ public class GUIKontroler extends JFrame {
 
 	
 	public static void ugasiAplikaciju() {
-		int opcija = JOptionPane.showConfirmDialog(prijavaGUI.getContentPane(),
+		int opcija = JOptionPane.showConfirmDialog(glavni.getContentPane(),
 				"Da li ZAISTA zelite da izadjete iz apliacije", "Izlazak",
 				JOptionPane.YES_NO_OPTION);
 
@@ -49,35 +54,27 @@ public class GUIKontroler extends JFrame {
 			System.exit(0);
 	}
 	
-	public static void prikaziPlannerProzor(String ime, String prezime, String brojIndeksa) {
-		PlannerGUI prozor = new PlannerGUI();
-		ucitajIzFajla(ime, prezime, brojIndeksa);
-		prozor.setLocationRelativeTo(prijavaGUI.getContentPane());
-		prozor.setVisible(true);
-	}
-	
-	public static void prikaziPrijavatProzor() {
-		prijavaGUI = new PrijavaGUI();
-		prijavaGUI.setVisible(true);
-		prijavaGUI.setLocationRelativeTo(null);
-	}
 	
 	public static void prikaziDodajPredmetProzor() {
 		DodajPredmet prozor = new DodajPredmet();
-		prozor.setLocationRelativeTo(prijavaGUI.getContentPane());
+		prozor.setLocationRelativeTo(glavni.getContentPane());
 		prozor.setVisible(true);
 	}
 	
 	
 	public static void ucitajIzFajla(String ime, String prezime, String brojIndeksa) {
 		try {
-				planner.ucitajIzFajla("F:/Workspace/Java/"+ime+prezime+brojIndeksa);
-				glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
-				glavni.prikaziPolozenePredmete(planner.vratiPolozenePredmete());
-				glavni.prikaziSvePredmete(planner.vratiSvePredmete());
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showOpenDialog(glavni.getContentPane());
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				planner.ucitajIzFajla(file.getAbsolutePath());
+				glavni.prikaziSvePredmete(planner.vratiSvePredmete());;
+			}	
 			
 		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(prijavaGUI.getContentPane(), e1.getMessage(),
+			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
 					"Greska", JOptionPane.ERROR_MESSAGE);
 		}
    }
@@ -85,10 +82,17 @@ public class GUIKontroler extends JFrame {
 	
 	public static void sacuvajUFajl(String ime, String prezime, String brojIndeksa) {
 		try {
-			planner.sacuvajUFajl("F:/Workspace/Java/"+ime+prezime+brojIndeksa);
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showSaveDialog(glavni.getContentPane());
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+
+				planner.sacuvajUFajl(file.getAbsolutePath());
+			}
 			
 		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(prijavaGUI.getContentPane(), e1.getMessage(),
+			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
 					"Greska", JOptionPane.ERROR_MESSAGE);
 		}
 		
