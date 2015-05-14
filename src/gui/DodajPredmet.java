@@ -11,6 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class DodajPredmet extends JFrame {
 
 	/**
@@ -122,6 +125,15 @@ public class DodajPredmet extends JFrame {
 	private JButton getBtnDodaj() {
 		if (btnDodaj == null) {
 			btnDodaj = new JButton("Dodaj ");
+			btnDodaj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.dodajPredmet(
+							txtNazivpredmeta.getText(),
+							txtEspb.getText(),
+							txtSemestar.getText());
+					dispose();
+				}
+			});
 			btnDodaj.setBounds(32, 199, 96, 29);
 		}
 		return btnDodaj;

@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.EventQueue;
 import java.io.File;
+import java.util.GregorianCalendar;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -62,6 +63,29 @@ public class GUIKontroler extends JFrame {
 		prozor.setVisible(true);
 	}
 	
+	public static void dodajPredmet(String naziv, String semestar, String ESPB) {
+		try{
+		
+		Predmet predmet = new Predmet();
+		GregorianCalendar d = new GregorianCalendar();
+	
+		
+		predmet.setNaziv(naziv);
+		predmet.setSemestar(Integer.parseInt(semestar));
+		predmet.setESPB(Integer.parseInt(ESPB));
+		predmet.setDatumIspita(d);
+		predmet.setPolozen(false);
+		
+		planner.dodajPredmet(predmet);
+		glavni.prikaziSvePredmete(planner.vratiSvePredmete());
+		glavni.prikaziAktuelnePredmete(planner.vratiAktuelnePredmete());
+		
+		}catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavni.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		}
 	
 	public static void ucitajIzFajla() {
 		try {
